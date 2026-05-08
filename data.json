@@ -1,0 +1,67 @@
+{
+    "announcement": {
+        "badge": "系统",
+        "title": "平台公告",
+        "publishTime": "2026-01-30 19:34:44",
+        "viewCount": 0,
+        "commentCount": 0
+    },
+    "posts": [
+        {
+            "badge": "公开",
+            "title": "124期新澳【免费分享】九肖十八码",
+            "avatar": "red",
+            "avatarText": "红",
+            "verified": true,
+            "publishTime": "2026-05-04 13:37",
+            "viewCount": 1548,
+            "commentCount": 96,
+            "lianhong": "2连红",
+            "price": "¥0.0",
+            "hiddenData": "特码: 27 生肖: 兔",
+            "verificationCode": "1234"
+        },
+        {
+            "badge": "公开",
+            "title": "124期新澳【常胜将军】精选七肖14码稳准猛",
+            "avatar": "red",
+            "avatarText": "红",
+            "verified": true,
+            "publishTime": "2026-05-04 13:36",
+            "viewCount": 1463,
+            "commentCount": 86,
+            "lianhong": "6连红",
+            "price": "¥218.0",
+            "hiddenData": "特码: 27 生肖: 兔",
+            "verificationCode": "1234"
+        },
+        {
+            "badge": "公开",
+            "title": "124期新澳【广东财叔】内幕十码中特大师精选主选",
+            "avatar": "black",
+            "avatarText": "黑",
+            "verified": true,
+            "publishTime": "2026-05-04 13:36",
+            "viewCount": 1475,
+            "commentCount": 83,
+            "lianhong": "6连红",
+            "price": "¥238.0",
+            "hiddenData": "特码: 27 生肖: 兔",
+            "verificationCode": "1234"
+        },
+        {
+            "badge": "公开",
+            "title": "124期新澳【神来之笔】内幕九码中特大师精选主选",
+            "avatar": "red",
+            "avatarText": "红",
+            "verified": true,
+            "publishTime": "2026-05-04 13:36",
+            "viewCount": 1475,
+            "commentCount": 83,
+            "lianhong": "6连红",
+            "price": "¥238.0",
+            "hiddenData": "特码: 27 生肖: 兔",
+            "verificationCode": "1234"
+        }
+    ]
+}

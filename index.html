@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金马彩亨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fef7ea;
+            min-height: 100vh;
+        }
+
+        /* 标题栏 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .header-left, .header-right {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .header-center {
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .header-subtitle {
+            font-size: 10px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        /* 导航标签 */
+        .nav-tabs {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .nav-tab {
+            font-size: 14px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 卡片容器 */
+        .content {
+            padding: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* 公告卡片 */
+        .announcement-card {
+            padding: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: linear-gradient(135deg, #f5a623, #f8981d);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 0 4px 4px 0;
+            margin-bottom: 10px;
+        }
+
+        .announcement-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .announcement-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* 帖子卡片 */
+        .post-card {
+            padding: 15px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .post-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 2px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .avatar.red {
+            border-color: #e53935;
+            color: #e53935;
+        }
+
+        .avatar.black {
+            border-color: #616161;
+            color: #616161;
+        }
+
+        .verified {
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .post-time {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .post-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-stats-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .stat-item i {
+            font-size: 14px;
+        }
+
+        .lianhong {
+            background-color: #e53935;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: #d4a017;
+        }
+
+        /* 底部导航 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #fff;
+            border-top: 1px solid #f0f0f0;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #999;
+            font-size: 10px;
+        }
+
+        .nav-item.active {
+            color: #d4a017;
+        }
+
+        .nav-item i {
+            font-size: 22px;
+        }
+
+        .nav-item.active i {
+            color: #d4a017;
+        }
+
+        /* 图标样式 */
+        .icon-close::before {
+            content: '×';
+            font-size: 24px;
+            color: #333;
+        }
+
+        .icon-more::before {
+            content: '⋮';
+            font-size: 24px;
+            color: #333;
+        }
+
+        .icon-eye::before {
+            content: '👁';
+        }
+
+        .icon-comment::before {
+            content: '💬';
+        }
+
+        .icon-home::before {
+            content: '🏠';
+        }
+
+        .icon-order::before {
+            content: '📋';
+        }
+
+        .icon-user::before {
+            content: '👤';
+        }
+
+        .icon-arrow::before {
+            content: '▼';
+            font-size: 10px;
+        }
+
+        .icon-bell::before {
+            content: '🔔';
+        }
+
+        /* 遮罩层样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        /* 弹窗容器样式 */
+        .modal-content {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            padding: 24px;
+        }
+
+        /* 输入框样式 */
+        .modal-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .modal-input:focus {
+            border-color: #d4a017;
+        }
+
+        /* 按钮样式 */
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.3s;
+        }
+
+        .modal-btn:hover {
+            opacity: 0.9;
+        }
+
+        .modal-btn-confirm {
+            background: linear-gradient(135deg, #f5a623, #f8981d);
+            color: #fff;
+        }
+
+        .modal-btn-cancel {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+
+        /* 错误提示样式 */
+        .error-message {
+            color: #e53935;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* 隐藏数据区域样式 */
+        .hidden-data {
+            background-color: #fff9e6;
+            border: 1px solid #f5a623;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .hidden-data.hidden {
+            display: none;
+        }
+
+        .post-card {
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .post-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .modal-buttons .modal-btn {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left icon-close"></div>
+        <div class="header-center">
+            <div class="header-title">金马彩亨</div>
+        </div>
+        <div class="header-right icon-more"></div>
+    </div>
+
+    <div class="nav-tabs">
+        <div class="nav-tab">主司义早 <span class="icon-arrow"></span></div>
+        <div class="nav-tab">默认排序 <span class="icon-arrow"></span></div>
+    </div>
+
+    <div class="content" id="content">
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">
+            <i class="icon-home"></i>
+            <span>首页</span>
+        </div>
+        <div class="nav-item">
+            <i class="icon-order"></i>
+            <span>订单</span>
+        </div>
+        <div class="nav-item">
+            <i class="icon-user"></i>
+            <span>我的</span>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-title">请输入验证码</div>
+            <input type="text" class="modal-input" id="verificationInput" placeholder="请输入验证码">
+            <div class="error-message hidden" id="errorMessage">验证码错误，请重新输入</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel" onclick="closeModal()">取消</button>
+                <button class="modal-btn modal-btn-confirm" onclick="verifyCode()">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let postsData = null;
+        let verifiedPostIndices = new Set();
+        let currentPostIndex = -1;
+
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                postsData = data;
+                renderContent(data);
+            } catch (error) {
+                console.error('加载数据失败:', error);
+            }
+        }
+
+        function renderContent(data) {
+            const content = document.getElementById('content');
+            content.innerHTML = '';
+
+            const announcement = data.announcement;
+            const announcementCard = `
+                <div class="card announcement-card">
+                    <span class="badge">${announcement.badge}</span>
+                    <div class="announcement-title">${announcement.title}</div>
+                    <div class="announcement-info">
+                        <span>发布于:</span>
+                        <span>${announcement.publishTime}</span>
+                    </div>
+                    <div class="stats">
+                        <span class="stat-item"><i class="icon-eye"></i> ${announcement.viewCount}</span>
+                        <span class="stat-item"><i class="icon-comment"></i> ${announcement.commentCount}</span>
+                    </div>
+                </div>
+            `;
+            content.innerHTML += announcementCard;
+
+            data.posts.forEach((post, index) => {
+                const verifiedHtml = post.verified ? '<div class="verified">该贴主已实名认证</div>' : '';
+                const isVerified = verifiedPostIndices.has(index);
+                const postCard = `
+                    <div class="card post-card" data-index="${index}">
+                        <span class="badge">${post.badge}</span>
+                        <div class="post-header">
+                            <div class="post-title">${post.title}</div>
+                            <div class="avatar ${post.avatar}">${post.avatarText}</div>
+                        </div>
+                        ${verifiedHtml}
+                        <div class="post-time">发布于: ${post.publishTime}</div>
+                        <div class="post-stats">
+                            <div class="post-stats-left">
+                                <span class="stat-item"><i class="icon-eye"></i> ${post.viewCount}</span>
+                                <span class="stat-item"><i class="icon-comment"></i> ${post.commentCount}</span>
+                                <span class="lianhong">${post.lianhong}</span>
+                            </div>
+                            <div class="price">${post.price}</div>
+                        </div>
+                        <div class="hidden-data ${isVerified ? '' : 'hidden'}" id="hiddenData-${index}">
+                            ${post.hiddenData}
+                        </div>
+                    </div>
+                `;
+                content.innerHTML += postCard;
+            });
+
+            document.querySelectorAll('.post-card').forEach((card, index) => {
+                card.addEventListener('click', () => handlePostClick(index));
+            });
+        }
+
+        function handlePostClick(index) {
+            if (verifiedPostIndices.has(index)) {
+                const hiddenDataElement = document.getElementById(`hiddenData-${index}`);
+                if (hiddenDataElement) {
+                    hiddenDataElement.classList.remove('hidden');
+                }
+            } else {
+                openModal(index);
+            }
+        }
+
+        function openModal(index) {
+            currentPostIndex = index;
+            document.getElementById('modalOverlay').classList.remove('hidden');
+            document.getElementById('verificationInput').value = '';
+            document.getElementById('errorMessage').classList.add('hidden');
+            document.getElementById('verificationInput').focus();
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.add('hidden');
+            currentPostIndex = -1;
+        }
+
+        function verifyCode() {
+            const inputCode = document.getElementById('verificationInput').value;
+            const post = postsData.posts[currentPostIndex];
+            if (inputCode === post.verificationCode) {
+                verifiedPostIndices.add(currentPostIndex);
+                const hiddenDataElement = document.getElementById(`hiddenData-${currentPostIndex}`);
+                if (hiddenDataElement) {
+                    hiddenDataElement.classList.remove('hidden');
+                }
+                closeModal();
+            } else {
+                document.getElementById('errorMessage').classList.remove('hidden');
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        document.getElementById('modalOverlay').addEventListener('click', (e) => {
+            if (e.target.id === 'modalOverlay') {
+                closeModal();
+            }
+        });
+
+        document.getElementById('verificationInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                verifyCode();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>
